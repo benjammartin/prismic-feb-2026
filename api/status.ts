@@ -3,5 +3,5 @@ export const config = {
 };
 
 export default function handler(_request: Request) {
-  return new Response("OK");
+  return new Response("Hello guy");
 }
