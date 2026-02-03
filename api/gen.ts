@@ -3,5 +3,5 @@ export const config = {
 };
 
 export default function handler(_request: Request) {
-  return new Response("Hello from /api/gen");
+  return Response.json({ ok: true, success: true });
 }
