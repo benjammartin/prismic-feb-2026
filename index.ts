@@ -3,10 +3,23 @@ Bun.serve({
   routes: {
     "/api/status": () => new Response("OK"),
     "/api/generate": {
-      POST: async (req) => {
-        const body = await req.json();
-        console.log("Received:", body);
-        return Response.json({ success: true, received: body });
+      POST: () => {
+        return Response.json({
+          score: 92,
+          blockingIssues: {
+            count: 1,
+            description: "These must be fixed before publishing:",
+            items: ["A RichText field exceeds the character limit"],
+          },
+          needsImprovement: {
+            count: 1,
+            description: "Not blocking, but should be addressed:",
+            items: ["A Alt text is empty"],
+          },
+          guidelinesMet: {
+            count: 3,
+          },
+        });
       },
     },
   },
