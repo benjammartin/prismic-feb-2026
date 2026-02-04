@@ -3,7 +3,12 @@ Bun.serve({
   routes: {
     "/api/status": () => new Response("OK"),
     "/api/generate": {
-      POST: () => {
+      POST: async (req) => {
+        const body = (await req.json().catch(() => ({}))) as {
+          content?: string;
+        };
+        const content = body.content ?? "";
+        // content is available here for use
         return Response.json({
           score: 92,
           blockingIssues: {
